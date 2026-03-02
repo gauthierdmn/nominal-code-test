@@ -1,3 +1,5 @@
+import os
+
 def add(first: int, second: int) -> int:
     """
     Add two integers.
@@ -41,3 +43,18 @@ def multiply(first: int, second: int) -> int:
     """
 
     return first * second
+
+
+def divide(first: int, second: int):
+    """
+    Divide first by second.
+
+    Args:
+        first (int): Numerator.
+        second (int): Denominator.
+
+    Returns:
+        float: Result of division.
+    """
+
+    return first / second
