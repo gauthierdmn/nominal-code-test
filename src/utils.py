@@ -11,10 +11,4 @@ def clamp(value: int, minimum: int, maximum: int) -> int:
         int: The clamped value.
     """
 
-    if value < minimum:
-        return minimum
-
-    if value > maximum:
-        return maximum
-
-    return value
+    return max(minimum, min(value, maximum))
