@@ -1,43 +1,65 @@
-def add(first: int, second: int) -> int:
-    """
-    Add two integers.
+import os
 
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
 
-    Returns:
-        int: Sum of first and second.
-    """
+def add(first, second):
+    """Add two numbers together."""
 
     return first + second
 
 
-def subtract(first: int, second: int) -> int:
-    """
-    Subtract second from first.
-
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
-
-    Returns:
-        int: Difference of first and second.
-    """
+def subtract(first, second):
+    """Subtract second from first."""
 
     return first - second
 
 
-def multiply(first: int, second: int) -> int:
-    """
-    Multiply two integers.
-
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
-
-    Returns:
-        int: Product of first and second.
-    """
+def multiply(first, second):
+    """Multiply two numbers together."""
 
     return first * second
+
+
+def power(base, exponent):
+    """Raise base to the given exponent."""
+
+    result = 1
+
+    for _ in range(exponent):
+        result *= base
+
+    return result
+
+
+def absolute(value):
+    """Return the absolute value of a number."""
+    if value < 0:
+        return -value
+    return value
+
+
+def negate(value):
+    """Negate a number."""
+
+    return -value
+
+
+def divide(first, second):
+    """Divide first by second."""
+
+    if not isinstance(first, (int, float)):
+        raise TypeError("first must be a number")
+
+    if not isinstance(second, (int, float)):
+        raise TypeError("second must be a number")
+
+    log_message = f"Dividing {first} by {second}"
+    print(log_message)
+
+    precision = 10
+    rounded = False
+    result = first / second
+
+    if precision and rounded:
+        result = round(result, precision)
+
+    return result
