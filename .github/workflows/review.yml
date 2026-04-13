@@ -1,0 +1,25 @@
+name: nominal-code-review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/gauthierdmn/nominal-code-google:b09d1401e951398868b5a8a5004047313e638b41
+      env:
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        AGENT_PROVIDER: google
+        AGENT_MODEL: gemini-2.5-flash-lite
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd /app && uv run nominal-code ci github
