@@ -1,43 +1,10 @@
-def add(first: int, second: int) -> int:
-    """
-    Add two integers.
+def clamp(value, minimum, maximum):
+    """Clamp a value between minimum and maximum."""
 
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
+    if value < minimum:
+        return minimum
 
-    Returns:
-        int: Sum of first and second.
-    """
+    if value > maximum:
+        return maximum
 
-    return first + second
-
-
-def subtract(first: int, second: int) -> int:
-    """
-    Subtract second from first.
-
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
-
-    Returns:
-        int: Difference of first and second.
-    """
-
-    return first - second
-
-
-def multiply(first: int, second: int) -> int:
-    """
-    Multiply two integers.
-
-    Args:
-        first (int): First operand.
-        second (int): Second operand.
-
-    Returns:
-        int: Product of first and second.
-    """
-
-    return first * second
+    return value
