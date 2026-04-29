@@ -1,0 +1,24 @@
+name: nominal-code-review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/gauthierdmn/nominal-code:369130c7e9e8ad2308155f12abb085b6150168d6
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        AGENT_MODEL: claude-3-haiku-20240307
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd /app && uv run nominal-code ci github
